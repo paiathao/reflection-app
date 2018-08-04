@@ -12,7 +12,6 @@ const defaultState = {
     understanding : '',
     support : '',
     comments : '',
-    date : '',
 }
 
 const newFeedback = (state = defaultState, action) => {
