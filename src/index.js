@@ -7,16 +7,43 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
-const feedbackStorage = (state = [], action) => {
+const defaultState = {
+    feeling : '',
+    understanding : '',
+    support : '',
+    comments : '',
+    date : '',
+}
+
+const newFeedback = (state = defaultState, action) => {
     switch (action.type) {
-        case "STORE_FEEDBACK":
-            return action.payload
-        case "DELETE_FEEDBACK":
-            return [];
+        case "ADD_FEELING" :
+            state.feeling = action.payload
+            break;
+        case "ADD_UNDERSTAND":
+            state.understanding = action.payload
+            break;
+        case "ADD_SUPPORT":
+            state.support = action.payload
+            break;
+        case "ADD_COMMENTS":
+            state.comments = action.payload
+            break;
+        case 'RESET':
+            state = defaultState;
+            break;
         default:
             return state
     }
     return state;
+}
+
+const feedbackStorage = (state = [], action) => {
+    if (action.type === 'STORE_FEEDBACK') {
+        console.log('feeback list', action.payload)
+        return action.payload
+    }
+    return state
 }
 
 
@@ -24,7 +51,7 @@ const feedbackStorage = (state = [], action) => {
 const storeInstance = createStore(
     combineReducers({
         feedbackStorage,
-        
+        newFeedback,
     }),
     applyMiddleware(logger)
 )
