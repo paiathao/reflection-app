@@ -7,46 +7,51 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
-const defaultState = {
+const currentFeedback = {
     feeling : '',
     understanding : '',
     support : '',
     comments : '',
 }
 
-const newFeedback = (state = defaultState, action) => {
+const newFeedback = (state = currentFeedback, action) => {
     switch (action.type) {
         case "ADD_FEELING" :
-            state.feeling = action.payload
+            state.feeling = action.payload;
             break;
         case "ADD_UNDERSTAND":
-            state.understanding = action.payload
+            state.understanding = action.payload;
             break;
         case "ADD_SUPPORT":
-            state.support = action.payload
+            state.support = action.payload;
             break;
         case "ADD_COMMENTS":
-            state.comments = action.payload
+            state.comments = action.payload;
             break;
         case 'RESET':
-            state = defaultState;
+            state = {
+                feeling : '',
+                understanding : '',
+                support : '',
+                comments : '',
+            }
             break;
         default:
-            return state
+            return state;
     }
     return state;
 }
 
+//List of all feedbacks
 const feedbackStorage = (state = [], action) => {
     if (action.type === 'STORE_FEEDBACK') {
-        console.log('feeback list', action.payload)
         return action.payload
     }
     return state
 }
 
 
-
+// Reducers
 const storeInstance = createStore(
     combineReducers({
         feedbackStorage,

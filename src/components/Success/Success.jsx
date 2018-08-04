@@ -20,10 +20,18 @@ class Success extends Component {
     });
   }
 
+  onClick = () => {
+    this.props.dispatch({
+      type: 'RESET',
+    })
+    this.props.history.push('/feel')
+  }
+
   render() {
     return (
       <div>
         <h1>Success</h1>
+        <button onClick={this.onClick}>Leave New Feedback</button>
       </div>
     );
   }
