@@ -3,15 +3,25 @@ import { connect } from 'react-redux';
 
 class Comments extends Component {
 
-  onChange = (event) => {
-    console.log(event.target.value);
-    this.props.dispatch({
-      type: 'ADD_COMMENTS',
-      payload: event.target.value
-    })
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      comments : '',
+    }
   }
 
-  handleNext = () => {
+  onChange = (event) => {
+    this.setState({
+      comments : event.target.value,
+    }) 
+  }
+
+  handleSubmit = () => {
+    this.props.dispatch({
+      type: 'ADD_COMMENTS',
+      payload: this.state.comments
+    })
     this.props.history.push('/success')
   }
 
@@ -19,7 +29,8 @@ class Comments extends Component {
     return (
       <div>
         Is there any additional comments you'd like leave?
-        <input type="text" />
+        <input type="text" onChange={this.onChange}/>
+        <button onClick={this.handleSubmit}>Submit</button>
       </div>
     );
   }

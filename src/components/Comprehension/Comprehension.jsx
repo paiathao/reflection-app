@@ -12,7 +12,6 @@ class Understand extends Component {
   }
 
   onChange = (event) => {
-    console.log(event.target.value);
     this.setState({
       comprehension : event.target.value,
     }) 

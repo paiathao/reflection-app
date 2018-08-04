@@ -12,7 +12,6 @@ class Feel extends Component {
   }
 
   onChange = (event) => {
-    console.log(event.target.value);
     this.setState({
       feeling : event.target.value,
     }) 

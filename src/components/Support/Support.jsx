@@ -12,7 +12,6 @@ class Support extends Component {
   }
 
   onChange = (event) => {
-    console.log(event.target.value);
     this.setState({
       support : event.target.value,
     }) 
@@ -23,7 +22,7 @@ class Support extends Component {
       type: 'ADD_SUPPORT',
       payload: this.state.support
     })
-    this.props.history.push('/comment')
+    this.props.history.push('/comments')
   }
 
   render() {
