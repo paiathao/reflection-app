@@ -3,15 +3,26 @@ import { connect } from 'react-redux';
 
 class Understand extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      comprehension : 0,
+    }
+  }
+
   onChange = (event) => {
     console.log(event.target.value);
-    this.props.dispatch({
-      type: 'ADD_UNDERSTAND',
-      payload: event.target.value
-    })
+    this.setState({
+      comprehension : event.target.value,
+    }) 
   }
 
   handleNext = () => {
+    this.props.dispatch({
+      type: 'ADD_UNDERSTAND',
+      payload: this.state.comprehension
+    })
     this.props.history.push('/support')
   }
 

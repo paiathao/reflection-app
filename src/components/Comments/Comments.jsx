@@ -6,7 +6,7 @@ class Comments extends Component {
   onChange = (event) => {
     console.log(event.target.value);
     this.props.dispatch({
-      type: 'ADD_FEELING',
+      type: 'ADD_COMMENTS',
       payload: event.target.value
     })
   }
@@ -19,7 +19,7 @@ class Comments extends Component {
     return (
       <div>
         Is there any additional comments you'd like leave?
-        <input type="text"/>
+        <input type="text" />
       </div>
     );
   }

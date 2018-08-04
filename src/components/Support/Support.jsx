@@ -3,15 +3,26 @@ import { connect } from 'react-redux';
 
 class Support extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      support : 0,
+    }
+  }
+
   onChange = (event) => {
     console.log(event.target.value);
-    this.props.dispatch({
-      type: 'ADD_SUPPORT',
-      payload: event.target.value
-    })
+    this.setState({
+      support : event.target.value,
+    }) 
   }
 
   handleNext = () => {
+    this.props.dispatch({
+      type: 'ADD_SUPPORT',
+      payload: this.state.support
+    })
     this.props.history.push('/comment')
   }
 
