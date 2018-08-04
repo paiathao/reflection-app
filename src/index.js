@@ -7,20 +7,28 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
-const reducers = combineReducers ({
-    FeedbackStorage : (state = [], action) => {
-        console.log('Feedback storage')
-      return state;
+const feedbackStorage = (state = [], action) => {
+    switch (action.type) {
+        case "STORE_FEEDBACK":
+            return action.payload
+        case "DELETE_FEEDBACK":
+            return [];
+        default:
+            return state
     }
-  })
-  
-  const storeInstance = createStore(
-      //Reducer
-     reducers,
-      //Logger
-      applyMiddleware(logger)
-  )
-  
+    return state;
+}
+
+
+
+const storeInstance = createStore(
+    combineReducers({
+        feedbackStorage,
+        
+    }),
+    applyMiddleware(logger)
+)
+
 
 ReactDOM.render(<Provider store={storeInstance}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();

@@ -6,7 +6,7 @@ import {HashRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
 
 //importing the diff views
 import Feel from '../Feel/Feel';
-import Understand from '../Understand/Understand';
+import Comprehension from '../Comprehension/Comprehension';
 import Support from '../Support/Support';
 import Comments from '../Comments/Comments';
 import Admin from '../Admin/Admin';
@@ -25,7 +25,7 @@ class App extends Component {
         <Switch>
         <Redirect exact from="/" to="/feel" />
         <Route path="/feel" component={Feel} />
-        <Route path="/understand" component={Understand} />
+        <Route path="/comprehension" component={Comprehension} />
         <Route path="/support" component={Support} />
         <Route path="/comments" component={Comments} />
         <Route path="/success" component={Success} />

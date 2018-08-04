@@ -4,7 +4,8 @@ class Comments extends Component {
   render() {
     return (
       <div>
-        <h1>Comments</h1>
+        Is there any additional comments you'd like leave?
+        <input type="text"/>
       </div>
     );
   }

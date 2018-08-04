@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-class Feel extends Component {
+class Understand extends Component {
   render() {
     return (
       <div>
-        How are you feeling today?
+        How well are you understanding today's material?
         <select>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -17,4 +17,4 @@ class Feel extends Component {
   }
 }
 
-export default Feel;
+export default Understand;
