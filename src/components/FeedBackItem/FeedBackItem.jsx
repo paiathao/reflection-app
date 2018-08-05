@@ -39,7 +39,7 @@ class FeedBackItem extends Component {
         let feedBackListItemArray = this.props.feedback.map((feedback, index) => {
             return (
             <tr key={index}>
-                <td>{feedback.date}</td>
+                <td>{ (new Date(feedback.date)).toLocaleDateString()}</td>
                 <td>{feedback.feeling}</td>
                 <td>{feedback.understanding}</td>
                 <td>{feedback.support}</td>
