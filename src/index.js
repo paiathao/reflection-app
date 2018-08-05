@@ -14,7 +14,7 @@ const currentFeedback = {
     comments : '',
 }
 
-const newFeedback = (state = currentFeedback, action) => {
+const newFeedBack = (state = currentFeedback, action) => {
     switch (action.type) {
         case "ADD_FEELING" :
             state.feeling = action.payload;
@@ -43,7 +43,7 @@ const newFeedback = (state = currentFeedback, action) => {
 }
 
 //List of all feedbacks
-const feedbackStorage = (state = [], action) => {
+const feedBackStorage = (state = [], action) => {
     if (action.type === 'STORE_FEEDBACK') {
         return action.payload
     }
@@ -54,8 +54,8 @@ const feedbackStorage = (state = [], action) => {
 // Reducers
 const storeInstance = createStore(
     combineReducers({
-        feedbackStorage,
-        newFeedback,
+        feedBackStorage,
+        newFeedBack,
     }),
     applyMiddleware(logger)
 )

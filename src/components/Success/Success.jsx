@@ -10,7 +10,7 @@ class Success extends Component {
   }
 
   saveComments = () => {
-    let feedback = this.props.newFeedback
+    let feedback = this.props.newFeedBack
     axios.post('/feedback', feedback)
     .then((response) => {
       console.log(response.data)
@@ -39,7 +39,7 @@ class Success extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    newFeedback : state.newFeedback}
+    newFeedBack : state.newFeedBack}
 }
 
 export default connect(mapStateToProps)(Success);

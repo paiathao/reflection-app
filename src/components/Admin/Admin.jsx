@@ -1,25 +1,10 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { connect } from 'react-redux';
+import FeedBackItem from '../FeedBackItem/FeedBackItem'
 
 class Admin extends Component {
 
-  componentDidMount() {
-    console.log('Component mounted')
-    axios.get('/feedback')
-        .then((response) => {
-            console.log(response.data)
-            this.props.dispatch({
-                type: 'STORE_FEEDBACK',
-                payload: response.data
-            })
-        })
-        .catch((err) => {
-            console.log('error', err)
-        });
-}
-
   render() {
+
     return (
       <div>
         <h1>Admin</h1>
@@ -27,27 +12,19 @@ class Admin extends Component {
         <table>
           <thead>
             <tr>
-              <td>Date</td>
-              <td>Feeling</td>
-              <td>Comprehension</td>
-              <td>Support</td>
-              <td>Comments</td>
-              <td>Delete</td>
+              <th>Date</th>
+              <th>Feeling</th>
+              <th>Comprehension</th>
+              <th>Support</th>
+              <th>Comments</th>
+              <th>Delete</th>
             </tr>
           </thead>
-          <tbody>
-          </tbody>
+            <FeedBackItem />
         </table>
-        {JSON.stringify(this.props.feedback)}
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-      feedback : state.feedbackStorage}
-}
-
-
-export default connect(mapStateToProps)(Admin);
+export default Admin;

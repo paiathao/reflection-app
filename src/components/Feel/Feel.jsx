@@ -7,14 +7,14 @@ class Feel extends Component {
     super(props);
 
     this.state = {
-      feeling : 0,
+      feeling: 0,
     }
   }
 
   onChange = (event) => {
     this.setState({
-      feeling : event.target.value,
-    }) 
+      feeling: event.target.value,
+    })
   }
 
   handleNext = () => {
