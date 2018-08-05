@@ -15,10 +15,7 @@ const styles = theme => ({
   },
   formControl: {
     margin: theme.spacing.unit,
-    minWidth: 120,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing.unit * 2,
+    minWidth: 100,
   },
 });
 
@@ -33,7 +30,7 @@ class Rating extends Component {
   }
 
   onChangeFor = (event) => {
-    //update state so input show value on DOM
+    //update state so input show current value on DOM
     this.setState({ 
       rating : event.target.value 
     });
@@ -52,9 +49,7 @@ class Rating extends Component {
           <Select
             value={this.state.rating}
             onChange={this.onChangeFor}
-            inputProps={{
-              rating: 'rating'
-            }}>
+            >
             <MenuItem value={1}>1</MenuItem>
             <MenuItem value={2}>2</MenuItem>
             <MenuItem value={3}>3</MenuItem>

@@ -27,6 +27,11 @@ body {
   vertical-align: center;
   padding-top: 20%;
   color: #07aa9e;
+  font-size: 25px;
+}
+
+form {
+  margin-left: 38%;
 }
 
 
