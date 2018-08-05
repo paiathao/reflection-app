@@ -28,7 +28,7 @@ class Understand extends Component {
   render() {
     return (
       <div>
-        How well are you understanding today's material?
+        How well are you understanding the content? 
         <select onChange={this.onChange}>
           <option value="1">1</option>
           <option value="2">2</option>

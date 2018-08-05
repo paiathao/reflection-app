@@ -28,7 +28,7 @@ class Comments extends Component {
   render() {
     return (
       <div>
-        Is there any additional comments you'd like leave?
+        Any comments you want to leave? 
         <input type="text" onChange={this.onChange}/>
         <button onClick={this.handleSubmit}>Submit</button>
       </div>

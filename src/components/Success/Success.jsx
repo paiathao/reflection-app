@@ -6,10 +6,10 @@ class Success extends Component {
 
   componentDidMount() {
     console.log('Component mounted')
-    this.saveComments();
+    this.saveFeed();
   }
 
-  saveComments = () => {
+  saveFeed = () => {
     let feedback = this.props.newFeedBack
     axios.post('/feedback', feedback)
     .then((response) => {

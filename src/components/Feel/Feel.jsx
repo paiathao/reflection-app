@@ -28,7 +28,7 @@ class Feel extends Component {
   render() {
     return (
       <div>
-        How are you feeling today?
+        How are you feeling today? 
         <select onChange={this.onChange}>
           <option value="1">1</option>
           <option value="2">2</option>

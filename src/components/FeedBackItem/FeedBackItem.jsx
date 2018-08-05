@@ -2,6 +2,24 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
+//Material-Ui import
+import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
+import { withStyles } from '@material-ui/core/styles';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
+
+const CustomTableCell = withStyles(theme => ({
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
 class FeedBackItem extends Component {
 
     componentDidMount() {
@@ -38,23 +56,26 @@ class FeedBackItem extends Component {
 
         let feedBackListItemArray = this.props.feedback.map((feedback, index) => {
             return (
-            <tr key={index}>
-                <td>{ (new Date(feedback.date)).toLocaleDateString()}</td>
-                <td>{feedback.feeling}</td>
-                <td>{feedback.understanding}</td>
-                <td>{feedback.support}</td>
-                <td>{feedback.comments}</td>
-                <td>
-                    <button onClick={() => this.deleteFeed(feedback.id)}>Delete</button>
-                </td>
-            </tr>
+            <TableRow key={index} className={this.props.className}>
+                <CustomTableCell>{ (new Date(feedback.date)).toLocaleDateString()}</CustomTableCell>
+                <CustomTableCell>{feedback.feeling}</CustomTableCell>
+                <CustomTableCell>{feedback.understanding}</CustomTableCell>
+                <CustomTableCell>{feedback.support}</CustomTableCell>
+                <CustomTableCell>{feedback.comments}</CustomTableCell>
+                <CustomTableCell>
+                    <Button variant="contained" color="secondary"
+                        onClick={() => this.deleteFeed(feedback.id)}>
+                        <DeleteIcon/>
+                    </Button>
+                </CustomTableCell>
+            </TableRow>
             )
         })
 
         return (
-            <tbody>
+            <TableBody>
                 {feedBackListItemArray}
-            </tbody>
+            </TableBody>
         );
     }
 }
