@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Select from '../Select/Select'
+import Rating from '../Rating/Rating'
 
 class Understand extends Component {
 
@@ -12,10 +12,10 @@ class Understand extends Component {
     }
   }
 
-  onChange = (event) => {
+  onChange = (rating) => {
     this.setState({
-      comprehension : event.target.value,
-    }) 
+      comprehension: rating,
+    })
   }
 
   handleNext = () => {
@@ -30,7 +30,7 @@ class Understand extends Component {
     return (
       <div>
         How well are you understanding the content? 
-        <Select onChange={this.onChange}/>
+        <Rating onChange={this.onChange}/>
         <button onClick={this.handleNext}>Next</button>
       </div>
     );

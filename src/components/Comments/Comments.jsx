@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import DoneAllOutlined from '@material-ui/icons/DoneAllOutlined'
 
 class Comments extends Component {
 
@@ -30,7 +31,9 @@ class Comments extends Component {
       <div>
         Any comments you want to leave? 
         <input type="text" onChange={this.onChange}/>
-        <button onClick={this.handleSubmit}>Submit</button>
+        <button onClick={this.handleSubmit}>
+          <DoneAllOutlined/>
+        </button>
       </div>
     );
   }

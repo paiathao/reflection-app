@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Select from '../Select/Select'
+import Rating from '../Rating/Rating'
 
 class Support extends Component {
 
@@ -12,10 +12,10 @@ class Support extends Component {
     }
   }
 
-  onChange = (event) => {
+  onChange = (rating) => {
     this.setState({
-      support : event.target.value,
-    }) 
+      support: rating,
+    })
   }
 
   handleNext = () => {
@@ -30,7 +30,7 @@ class Support extends Component {
     return (
       <div>
         How well are you being supported? 
-        <Select onChange={this.onChange}/>
+        <Rating onChange={this.onChange}/>
         <button onClick={this.handleNext}>Next</button>
       </div>
     );

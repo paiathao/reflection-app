@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Select from '../Select/Select'
+import Rating from '../Rating/Rating'
+import ArrowForward from '@material-ui/icons/ArrowForwardTwoTone'
+import Button from '@material-ui/core/Button';
 
 class Feel extends Component {
 
@@ -12,9 +14,9 @@ class Feel extends Component {
     }
   }
 
-  onChange = (event) => {
+  onChange = (rating) => {
     this.setState({
-      feeling: event.target.value,
+      feeling: rating,
     })
   }
 
@@ -28,10 +30,13 @@ class Feel extends Component {
 
   render() {
     return (
-      <div>
-        How are you feeling today? 
-        <Select onChange={this.onChange}/>
-        <button onClick={this.handleNext}>Next</button>
+      <div className="card">
+              <h1 className="question">How are you feeling today?</h1>
+              <Rating onChange={this.onChange} />
+              <Button variant="contained" color="primary"
+              onClick={this.handleNext}>
+                Next <ArrowForward />
+              </Button>
       </div>
     );
   }
