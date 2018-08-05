@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import FeedBackItem from '../FeedBackItem/FeedBackItem'
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -33,33 +33,33 @@ const styles = theme => ({
   },
 });
 
-function Admin (props) {
+function Admin(props) {
 
   const { classes } = props;
 
-    return (
-      
-      <div>
-        <h1>Admin</h1>
+  return (
 
-        <Paper className={classes.root}>
-          <Table className={classes.table}>
+    <div>
+      <h1>Admin</h1>
+
+      <Paper className={classes.root}>
+        <Table className={classes.table}>
           <TableHead>
-              <TableRow>
-                <CustomTableCell>Date</CustomTableCell>
-                <CustomTableCell>Feeling</CustomTableCell>
-                <CustomTableCell>Comprehension</CustomTableCell>
-                <CustomTableCell>Support</CustomTableCell>
-                <CustomTableCell>Comments</CustomTableCell>
-                <CustomTableCell>Delete</CustomTableCell>
-              </TableRow>
-              </TableHead>
-            <FeedBackItem className={classes.row}/>
-          </Table>
-        </Paper>
-      </div>
-    );
-  }
+            <TableRow>
+              <CustomTableCell>Date</CustomTableCell>
+              <CustomTableCell>Feeling</CustomTableCell>
+              <CustomTableCell>Comprehension</CustomTableCell>
+              <CustomTableCell>Support</CustomTableCell>
+              <CustomTableCell>Comments</CustomTableCell>
+              <CustomTableCell>Delete</CustomTableCell>
+            </TableRow>
+          </TableHead>
+          <FeedBackItem className={classes.row} />
+        </Table>
+      </Paper>
+    </div>
+  );
+}
 
 
 export default withStyles(styles)(Admin);

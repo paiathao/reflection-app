@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
+import DoneAllOutlined from '@material-ui/icons/DoneAllOutlined'
 
 class Comments extends Component {
 
@@ -7,14 +9,14 @@ class Comments extends Component {
     super(props);
 
     this.state = {
-      comments : '',
+      comments: '',
     }
   }
 
   onChange = (event) => {
     this.setState({
-      comments : event.target.value,
-    }) 
+      comments: event.target.value,
+    })
   }
 
   handleSubmit = () => {
@@ -27,10 +29,13 @@ class Comments extends Component {
 
   render() {
     return (
-      <div>
-        Any comments you want to leave? 
-        <input type="text" onChange={this.onChange}/>
-        <button onClick={this.handleSubmit}>Submit</button>
+      <div className="card">
+        <h1 className="question">Any comments you want to leave?</h1>
+        <input type="text" onChange={this.onChange} />
+        <Button variant="contained" color="primary"
+          onClick={this.handleSubmit}>
+          <DoneAllOutlined />
+        </Button>
       </div>
     );
   }
