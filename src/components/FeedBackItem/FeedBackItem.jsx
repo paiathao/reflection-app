@@ -1,8 +1,37 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 class FeedBackItem extends Component {
 
+    componentDidMount() {
+        console.log('Component mounted')
+        this.getAllFeeds();
+      }
+
+    getAllFeeds = () => {
+        axios.get('/feedback')
+        .then((response) => {
+          console.log(response.data)
+          this.props.dispatch({
+            type: 'STORE_FEEDBACK',
+            payload: response.data
+          })
+        })
+        .catch((err) => {
+          console.log('error', err)
+        });
+    }
+
+    deleteFeed = (id) => {
+        axios.delete(`/feedback/${id}`)
+        .then((response) =>{
+            this.getAllFeeds();
+        })
+        .catch((err) => {
+            console.log('error', err)
+        })
+    }
 
 
     render() {
@@ -16,7 +45,7 @@ class FeedBackItem extends Component {
                 <td>{feedback.support}</td>
                 <td>{feedback.comments}</td>
                 <td>
-                    <button>Delete</button>
+                    <button onClick={() => this.deleteFeed(feedback.id)}>Delete</button>
                 </td>
             </tr>
             )

@@ -14,21 +14,6 @@ import Success from '../Success/Success';
 
 class App extends Component {
 
-  componentDidMount() {
-    console.log('Component mounted')
-    axios.get('/feedback')
-      .then((response) => {
-        console.log(response.data)
-        this.props.dispatch({
-          type: 'STORE_FEEDBACK',
-          payload: response.data
-        })
-      })
-      .catch((err) => {
-        console.log('error', err)
-      });
-  }
-
   render() {
     return (
       <Router>
