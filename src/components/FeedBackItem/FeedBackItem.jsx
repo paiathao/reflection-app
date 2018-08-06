@@ -51,7 +51,6 @@ class FeedBackItem extends Component {
             })
     }
 
-
     render() {
 
         let feedBackListItemArray = this.props.feedback.map((feedback, index) => {
@@ -88,6 +87,5 @@ const mapStateToProps = (state) => {
         feedback: state.feedBackStorage
     }
 }
-
 
 export default connect(mapStateToProps)(FeedBackItem);
