@@ -11,16 +11,28 @@ class FlagItem extends Component {
   }
 
 
-  render() {
 
-    return (
-      <div>
-        <Button onClick={() => this.flagItem(this.props.feedback)}>
-        </Button>
-        {this.props.feedback.flagged}
-      </div>
-    );
-  }
+
+
+render() {
+
+  const feedback = this.props.feedback.toString();
+  let icon;
+
+    if (feedback == 'true') {
+      icon = <FlagRounded/>
+    } else {
+      icon = <FlagOutlined/>
+    }
+  
+  return (
+    <div>
+      <Button onClick={() => this.flagItem(this.props.feedback)}>
+        {icon}
+      </Button>
+    </div>
+  );
+}
 }
 
 export default connect()(FlagItem);
