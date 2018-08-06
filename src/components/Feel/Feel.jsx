@@ -33,7 +33,7 @@ class Feel extends Component {
       <div className="card">
               <h1 className="question">How are you feeling today?</h1>
               <Rating onChange={this.onChange} />
-              <Button variant="contained" color="primary"
+              <Button variant="contained" color="primary" className="nextButton"
               onClick={this.handleNext}>
                 Next <ArrowForward />
               </Button>

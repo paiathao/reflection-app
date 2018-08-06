@@ -32,10 +32,12 @@ class Comments extends Component {
       <div className="card">
         <h1 className="question">Any comments you want to leave?</h1>
         <input type="text" onChange={this.onChange} />
-        <Button variant="contained" color="primary"
-          onClick={this.handleSubmit}>
-          <DoneAllOutlined />
-        </Button>
+        <p>
+          <Button variant="contained" color="primary"
+            onClick={this.handleSubmit}>
+            <DoneAllOutlined />
+          </Button>
+        </p>
       </div>
     );
   }

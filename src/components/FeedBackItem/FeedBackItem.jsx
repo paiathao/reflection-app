@@ -11,13 +11,13 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 
 const CustomTableCell = withStyles(theme => ({
-  head: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-  },
-  body: {
-    fontSize: 14,
-  },
+    head: {
+        backgroundColor: theme.palette.common.black,
+        color: theme.palette.common.white,
+    },
+    body: {
+        fontSize: 14,
+    },
 }))(TableCell);
 
 class FeedBackItem extends Component {
@@ -25,30 +25,30 @@ class FeedBackItem extends Component {
     componentDidMount() {
         console.log('Component mounted')
         this.getAllFeeds();
-      }
+    }
 
     getAllFeeds = () => {
         axios.get('/feedback')
-        .then((response) => {
-          console.log(response.data)
-          this.props.dispatch({
-            type: 'STORE_FEEDBACK',
-            payload: response.data
-          })
-        })
-        .catch((err) => {
-          console.log('error', err)
-        });
+            .then((response) => {
+                console.log(response.data)
+                this.props.dispatch({
+                    type: 'STORE_FEEDBACK',
+                    payload: response.data
+                })
+            })
+            .catch((err) => {
+                console.log('error', err)
+            });
     }
 
     deleteFeed = (id) => {
         axios.delete(`/feedback/${id}`)
-        .then((response) =>{
-            this.getAllFeeds();
-        })
-        .catch((err) => {
-            console.log('error', err)
-        })
+            .then((response) => {
+                this.getAllFeeds();
+            })
+            .catch((err) => {
+                console.log('error', err)
+            })
     }
 
 
@@ -56,19 +56,22 @@ class FeedBackItem extends Component {
 
         let feedBackListItemArray = this.props.feedback.map((feedback, index) => {
             return (
-            <TableRow key={index} className={this.props.className}>
-                <CustomTableCell>{ (new Date(feedback.date)).toLocaleDateString()}</CustomTableCell>
-                <CustomTableCell>{feedback.feeling}</CustomTableCell>
-                <CustomTableCell>{feedback.understanding}</CustomTableCell>
-                <CustomTableCell>{feedback.support}</CustomTableCell>
-                <CustomTableCell>{feedback.comments}</CustomTableCell>
-                <CustomTableCell>
-                    <Button variant="contained" color="secondary"
-                        onClick={() => this.deleteFeed(feedback.id)}>
-                        <DeleteIcon/>
-                    </Button>
-                </CustomTableCell>
-            </TableRow>
+                <TableRow key={index} className={this.props.className}>
+                    <CustomTableCell>{(new Date(feedback.date)).toLocaleDateString()}</CustomTableCell>
+                    <CustomTableCell>{feedback.feeling}</CustomTableCell>
+                    <CustomTableCell>{feedback.understanding}</CustomTableCell>
+                    <CustomTableCell>{feedback.support}</CustomTableCell>
+                    <CustomTableCell>{feedback.comments}</CustomTableCell>
+                    <CustomTableCell>
+                        <Button variant="contained" color="secondary"
+                            onClick={(e) => {
+                                if (window.confirm('Are you sure you want to delete this item?'))
+                                    this.deleteFeed(feedback.id)
+                            }} >
+                            <DeleteIcon />
+                        </Button>
+                    </CustomTableCell>
+                </TableRow>
             )
         })
 
