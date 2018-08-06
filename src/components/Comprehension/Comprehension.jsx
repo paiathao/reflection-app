@@ -21,11 +21,15 @@ class Understand extends Component {
   }
 
   handleNext = () => {
-    this.props.dispatch({
-      type: 'ADD_UNDERSTAND',
-      payload: this.state.comprehension
-    })
-    this.props.history.push('/support')
+    if (this.state.comprehension > 0) {
+      this.props.dispatch({
+        type: 'ADD_UNDERSTAND',
+        payload: this.state.comprehension
+      })
+      this.props.history.push('/support')
+    } else {
+      alert('Please select a rating!')
+    }
   }
 
   render() {

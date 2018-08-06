@@ -46,7 +46,7 @@ class Rating extends Component {
       <form className={classes.root} autoComplete="off">
         <FormControl className={classes.formControl}>
           <InputLabel>Rating</InputLabel>
-          <Select
+          <Select 
             value={this.state.rating}
             onChange={this.onChangeFor}
             >
