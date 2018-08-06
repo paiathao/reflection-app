@@ -21,11 +21,15 @@ class Support extends Component {
   }
 
   handleNext = () => {
-    this.props.dispatch({
-      type: 'ADD_SUPPORT',
-      payload: this.state.support
-    })
-    this.props.history.push('/comments')
+    if (this.state.support > 0) {
+      this.props.dispatch({
+        type: 'ADD_SUPPORT',
+        payload: this.state.support
+      })
+      this.props.history.push('/comments')
+    } else {
+      alert('Please select a rating!')
+    }
   }
 
   render() {

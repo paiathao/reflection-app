@@ -21,22 +21,26 @@ class Feel extends Component {
   }
 
   handleNext = () => {
-    this.props.dispatch({
-      type: 'ADD_FEELING',
-      payload: this.state.feeling
-    })
-    this.props.history.push('/comprehension')
+    if (this.state.feeling > 0) {
+      this.props.dispatch({
+        type: 'ADD_FEELING',
+        payload: this.state.feeling
+      })
+      this.props.history.push('/comprehension')
+    } else {
+      alert('Please select a rating!')
+    }
   }
 
   render() {
     return (
       <div className="card">
-              <h1 className="question">How are you feeling today?</h1>
-              <Rating onChange={this.onChange} />
-              <Button variant="contained" color="primary" className="nextButton"
-              onClick={this.handleNext}>
-                Next <ArrowForward />
-              </Button>
+        <h1 className="question">How are you feeling today?</h1>
+        <Rating onChange={this.onChange} />
+        <Button variant="contained" color="primary" className="nextButton"
+          onClick={this.handleNext}>
+          Next <ArrowForward />
+        </Button>
       </div>
     );
   }
