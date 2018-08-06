@@ -53,7 +53,9 @@ class FeedBackItem extends Component {
 
     render() {
 
-        let feedBackListItemArray = this.props.feedback.map((feedback, index) => {
+        let feedbackArray = this.props.feedback.reverse()
+
+        let feedBackListItemArray = feedbackArray.map((feedback, index) => {
             return (
                 <TableRow key={index} className={this.props.className}>
                     <CustomTableCell>{(new Date(feedback.date)).toLocaleDateString()}</CustomTableCell>
