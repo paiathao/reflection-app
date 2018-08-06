@@ -54,6 +54,7 @@ function Admin(props) {
               <CustomTableCell>Support</CustomTableCell>
               <CustomTableCell>Comments</CustomTableCell>
               <CustomTableCell>Delete</CustomTableCell>
+              <CustomTableCell>Flag</CustomTableCell>
             </TableRow>
           </TableHead>
           <FeedBackItem className={classes.row} />

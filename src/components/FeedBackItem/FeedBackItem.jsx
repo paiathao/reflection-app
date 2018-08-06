@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import FlagItem from '../FlagItem/FlagItem'
 
 //Material-Ui import
 import Button from '@material-ui/core/Button';
@@ -53,6 +54,8 @@ class FeedBackItem extends Component {
 
     render() {
 
+        console.log('flag', this.props.feedback.flagged)
+
         let feedbackArray = this.props.feedback.reverse()
 
         let feedBackListItemArray = feedbackArray.map((feedback, index) => {
@@ -71,6 +74,9 @@ class FeedBackItem extends Component {
                             }} >
                             <DeleteIcon />
                         </Button>
+                    </CustomTableCell>
+                    <CustomTableCell>
+                        {feedback.flagged}
                     </CustomTableCell>
                 </TableRow>
             )

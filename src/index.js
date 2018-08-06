@@ -8,38 +8,44 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
 const currentFeedback = {
-    feeling : '',
-    understanding : '',
-    support : '',
-    comments : '',
+    feeling: '',
+    understanding: '',
+    support: '',
+    comments: '',
 }
 
 const newFeedBack = (state = currentFeedback, action) => {
     switch (action.type) {
-        case "ADD_FEELING" :
-            state.feeling = action.payload;
-            break;
-        case "ADD_UNDERSTAND":
-            state.understanding = action.payload;
-            break;
-        case "ADD_SUPPORT":
-            state.support = action.payload;
-            break;
-        case "ADD_COMMENTS":
-            state.comments = action.payload;
-            break;
-        case 'RESET':
-            state = {
-                feeling : '',
-                understanding : '',
-                support : '',
-                comments : '',
+        case "ADD_FEELING":
+            return {
+                ...state,
+                feeling: action.payload
             }
-            break;
+        case "ADD_UNDERSTAND":
+            return {
+                ...state,
+                understanding: action.payload
+            }
+        case "ADD_SUPPORT":
+            return {
+                ...state,
+                support: action.payload
+            }
+        case "ADD_COMMENTS":
+            return {
+                ...state,
+                comments: action.payload
+            }
+        case 'RESET':
+            return state = {
+                feeling: '',
+                understanding: '',
+                support: '',
+                comments: '',
+            }
         default:
             return state;
     }
-    return state;
 }
 
 //List of all feedbacks
