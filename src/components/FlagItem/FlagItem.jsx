@@ -3,36 +3,30 @@ import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import FlagOutlined from '@material-ui/icons/FlagOutlined'
 import FlagRounded from '@material-ui/icons/FlagRounded'
+import axios from 'axios';
 
 class FlagItem extends Component {
 
-  flagItem = (feedback) => {
-    console.log('flag', feedback)
-  }
 
 
+  render() {
+    
+    const feedback = this.props.feedback.flagged
+    let icon;
 
-
-
-render() {
-
-  const feedback = this.props.feedback.toString();
-  let icon;
-
-    if (feedback == 'true') {
-      icon = <FlagRounded/>
+    if (feedback === true) {
+      icon = <Button variant="contained" color="secondary" 
+          onClick={() => this.props.flagItem(this.props.feedback)}><FlagRounded /></Button>
     } else {
-      icon = <FlagOutlined/>
+      icon = <Button onClick={() => this.props.flagItem(this.props.feedback)}><FlagOutlined /></Button>
     }
-  
-  return (
-    <div>
-      <Button onClick={() => this.flagItem(this.props.feedback)}>
-        {icon}
-      </Button>
-    </div>
-  );
-}
+
+    return (
+      <div>
+          {icon}
+      </div>
+    );
+  }
 }
 
 export default connect()(FlagItem);

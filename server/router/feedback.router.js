@@ -40,11 +40,10 @@ router.delete('/:id', (req, res) => {
 })
 
 router.put('/', (req, res) => {
-  console.log(req.body)
-  pool.query(`UPDATE "feedback" set "flagged" = $1,`, [req.body.flagged])
+  pool.query(`UPDATE "feedback" SET "flagged" = NOT "flagged" WHERE "id" = $1;`, [req.body.id])
   .then((results) => {
-    console.log('PUT results', results);
-    res.send(results.rows);
+    console.log(results)
+    res.sendStatus(200);
   })
   .catch((errorFromPG) => {
     console.log(errorFromPG)

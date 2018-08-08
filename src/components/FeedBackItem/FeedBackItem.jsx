@@ -31,7 +31,7 @@ class FeedBackItem extends Component {
     getAllFeeds = () => {
         axios.get('/feedback')
             .then((response) => {
-                console.log(response.data)
+                console.log('response', response.data)
                 this.props.dispatch({
                     type: 'STORE_FEEDBACK',
                     payload: response.data
@@ -51,6 +51,17 @@ class FeedBackItem extends Component {
                 console.log('error', err)
             })
     }
+
+    flagItem = (feedback) => {
+        axios.put('/feedback/', feedback)
+          .then((response) => {
+            console.log('response', response)
+            this.getAllFeeds();
+          })
+          .catch((err) => {
+            console.log('error', err)
+          })
+      }
 
     render() {
 
@@ -74,7 +85,7 @@ class FeedBackItem extends Component {
                         </Button>
                     </CustomTableCell>
                     <CustomTableCell>
-                        <FlagItem feedback={feedback.flagged}/>
+                        <FlagItem feedback={feedback} flagItem={this.flagItem}/>
                     </CustomTableCell>
                 </TableRow>
             )
